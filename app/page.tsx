@@ -15,7 +15,7 @@ import {
 export default function HomePage() {
   return (
     <>
-      <section className="relative min-h-[100svh] overflow-hidden">
+      <section className="relative min-h-[68svh] overflow-hidden md:min-h-[72svh]">
         <Image
           src={images.hero}
           alt="Calm aesthetic treatment atmosphere"
@@ -29,29 +29,29 @@ export default function HomePage() {
           style={{ background: "var(--hero-overlay)" }}
           aria-hidden
         />
-        <div className="relative mx-auto flex min-h-[100svh] max-w-6xl flex-col justify-end px-5 pb-20 pt-32 md:px-8 md:pb-28">
-          <p className="animate-fade-up font-display text-4xl text-white md:text-6xl lg:text-7xl">
+        <div className="relative mx-auto flex min-h-[68svh] max-w-6xl flex-col justify-end px-5 pb-12 pt-28 md:min-h-[72svh] md:px-8 md:pb-16">
+          <p className="animate-fade-up font-display text-4xl text-white md:text-5xl lg:text-6xl">
             {clinic.name}
           </p>
-          <h1 className="animate-fade-up delay-100 mt-4 max-w-xl font-display text-2xl font-medium leading-snug text-white/95 md:text-3xl">
+          <h1 className="animate-fade-up delay-100 mt-3 max-w-xl font-display text-xl font-medium leading-snug text-white/95 md:text-2xl">
             {clinic.tagline}
           </h1>
-          <p className="animate-fade-up delay-200 mt-4 max-w-lg text-base leading-relaxed text-white/85">
+          <p className="animate-fade-up delay-200 mt-3 max-w-lg text-sm leading-relaxed text-white/85 md:text-base">
             Personalized skincare and cosmetic treatments in a quiet clinical
             setting—built around your goals, not trends.
           </p>
-          <div className="animate-fade-up delay-300 mt-8 flex flex-wrap gap-3">
+          <div className="animate-fade-up delay-300 mt-6 flex flex-wrap gap-3">
             <a
               href={clinic.whatsappHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center bg-surface px-5 py-3 text-sm font-medium text-foreground transition-colors duration-300 hover:bg-accent-soft"
+              className="inline-flex items-center bg-surface px-5 py-2.5 text-sm font-medium text-foreground transition-colors duration-300 hover:bg-accent-soft"
             >
               Book slot
             </a>
             <Link
               href="/services"
-              className="inline-flex items-center border border-white/50 px-5 py-3 text-sm font-medium text-white transition-colors duration-300 hover:bg-white/10"
+              className="inline-flex items-center border border-white/50 px-5 py-2.5 text-sm font-medium text-white transition-colors duration-300 hover:bg-white/10"
             >
               Explore services
             </Link>
@@ -113,16 +113,16 @@ export default function HomePage() {
       </section>
 
       <section className="border-b border-border bg-background">
-        <div className="mx-auto max-w-6xl overflow-hidden px-5 py-12 md:px-8 md:py-14">
+        <div className="mx-auto max-w-6xl overflow-hidden px-5 py-6 md:px-8 md:py-8">
           <div className="relative w-full">
-            <div className="flex gap-8 animate-float-x md:gap-10">
+            <div className="flex gap-5 animate-float-x md:gap-6">
               {[...trustPoints, ...trustPoints].map((point, idx) => (
                 <div
                   key={point.label + idx}
-                  className="flex min-w-[240px] flex-shrink-0 items-center gap-3 border border-border bg-surface px-6 py-5"
+                  className="flex min-w-[200px] flex-shrink-0 items-center gap-2.5 border border-border bg-surface px-4 py-3"
                 >
                   <span
-                    className="h-2 w-2 shrink-0 rounded-full bg-accent"
+                    className="h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
                     aria-hidden
                   />
                   <p className="text-sm font-medium leading-snug text-foreground">
@@ -142,45 +142,6 @@ export default function HomePage() {
         <div className="mt-4 h-px w-16 bg-accent" aria-hidden />
         <div className="mt-8">
           <GoogleReviews />
-        </div>
-      </section>
-
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0">
-          <Image
-            src={images.cta}
-            alt=""
-            fill
-            className="object-cover"
-            sizes="100vw"
-            aria-hidden
-          />
-          <div className="absolute inset-0 bg-foreground/70" aria-hidden />
-        </div>
-        <div className="relative mx-auto max-w-6xl px-5 py-24 md:px-8 md:py-28">
-          <p className="font-display text-4xl text-white md:text-5xl">
-            Ready for a clearer plan?
-          </p>
-          <p className="mt-4 max-w-lg text-base text-white/85">
-            Book a slot at our Gulberg clinic and leave with a treatment
-            path that feels right for you.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <a
-              href={clinic.whatsappHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center bg-surface px-5 py-3 text-sm font-medium text-foreground transition-colors duration-300 hover:bg-accent-soft"
-            >
-              Book slot
-            </a>
-            <a
-              href={clinic.phoneHref}
-              className="inline-flex items-center border border-white/50 px-5 py-3 text-sm font-medium text-white transition-colors duration-300 hover:bg-white/10"
-            >
-              Call {clinic.phone}
-            </a>
-          </div>
         </div>
       </section>
     </>
