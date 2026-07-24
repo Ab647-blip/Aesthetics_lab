@@ -95,7 +95,7 @@ body {
 }
 
 .animate-float-x {
-  animation: float-x 18s linear infinite;
+  animation: float-x 45s linear infinite;
   will-change: transform;
   width: max-content;
 }

@@ -29,8 +29,15 @@ export function ButtonLink({
     href.startsWith("http");
 
   if (isExternal) {
+    const openInNewTab = href.startsWith("http");
     return (
-      <a href={href} className={classNames}>
+      <a
+        href={href}
+        className={classNames}
+        {...(openInNewTab
+          ? { target: "_blank", rel: "noopener noreferrer" }
+          : {})}
+      >
         {children}
       </a>
     );

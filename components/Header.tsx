@@ -67,16 +67,18 @@ export default function Header() {
         </nav>
 
         <div className="hidden md:block">
-          <Link
-            href="/contact"
+          <a
+            href={clinic.whatsappHref}
+            target="_blank"
+            rel="noopener noreferrer"
             className={`inline-flex items-center px-4 py-2.5 text-sm font-medium transition-colors duration-300 ${
               overHero
                 ? "bg-white text-foreground hover:bg-white/90"
                 : "bg-accent text-surface hover:bg-accent-deep"
             }`}
           >
-            Book consultation
-          </Link>
+            Book slot
+          </a>
         </div>
 
         <button
@@ -131,12 +133,14 @@ export default function Header() {
               </Link>
             );
           })}
-          <Link
-            href="/contact"
+          <a
+            href={clinic.whatsappHref}
+            target="_blank"
+            rel="noopener noreferrer"
             className="mt-3 inline-flex items-center justify-center bg-accent px-4 py-3 text-sm font-medium text-surface"
           >
-            Book consultation
-          </Link>
+            Book slot
+          </a>
         </nav>
       </div>
     </header>

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import SectionHeading from "@/components/SectionHeading";
 import { clinic, images, team } from "@/lib/content";
 
@@ -55,12 +54,14 @@ export default function AboutPage() {
                 Our aim is refinement—not a look that no longer feels like you.
               </li>
             </ul>
-            <Link
-              href="/contact"
+            <a
+              href={clinic.whatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
               className="mt-8 inline-flex items-center bg-accent px-5 py-3 text-sm font-medium text-surface transition-colors duration-300 hover:bg-accent-deep"
             >
-              Book a consultation
-            </Link>
+              Book slot
+            </a>
           </div>
         </div>
       </section>

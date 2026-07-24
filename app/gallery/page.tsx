@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import GalleryGrid from "@/components/GalleryGrid";
 import SectionHeading from "@/components/SectionHeading";
+import { clinic } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Gallery",
@@ -31,12 +31,14 @@ export default function GalleryPage() {
             Start with a consultation so we can recommend the right treatment
             path for your skin.
           </p>
-          <Link
-            href="/contact"
+          <a
+            href={clinic.whatsappHref}
+            target="_blank"
+            rel="noopener noreferrer"
             className="mt-6 inline-flex items-center bg-accent px-5 py-3 text-sm font-medium text-surface transition-colors duration-300 hover:bg-accent-deep"
           >
-            Book consultation
-          </Link>
+            Book slot
+          </a>
         </div>
       </section>
     </div>

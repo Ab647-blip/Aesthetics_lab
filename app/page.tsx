@@ -1,14 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
+import BeforeAfterShowcase from "@/components/BeforeAfterShowcase";
+import GoogleReviews from "@/components/GoogleReviews";
 import SectionHeading from "@/components/SectionHeading";
 import TreatmentPreview from "@/components/TreatmentPreview";
 import {
   clinic,
-  homeIntro,
   images,
   ownerNote,
   servicesSpotlight,
-  testimonials,
   trustPoints,
 } from "@/lib/content";
 
@@ -41,12 +41,14 @@ export default function HomePage() {
             setting—built around your goals, not trends.
           </p>
           <div className="animate-fade-up delay-300 mt-8 flex flex-wrap gap-3">
-            <Link
-              href="/contact"
+            <a
+              href={clinic.whatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center bg-surface px-5 py-3 text-sm font-medium text-foreground transition-colors duration-300 hover:bg-accent-soft"
             >
-              Book consultation
-            </Link>
+              Book slot
+            </a>
             <Link
               href="/services"
               className="inline-flex items-center border border-white/50 px-5 py-3 text-sm font-medium text-white transition-colors duration-300 hover:bg-white/10"
@@ -57,90 +59,75 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="border-b border-border bg-white">
-        <div className="mx-auto max-w-3xl px-5 py-16 text-center md:px-8 md:py-20">
-          <h2 className="font-display text-3xl  italic leading-snug text-foreground md:text-4xl">
-            {homeIntro.heading}
-          </h2>
-          <div className="mt-6 space-y-3 text-base leading-relaxed text-muted">
-            {homeIntro.notes.map((note) => (
-              <p key={note.slice(0, 40)}>{note}</p>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="border-b border-border bg-background">
-        <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-16 md:grid-cols-2 md:gap-14 md:px-8 md:py-24">
-          <TreatmentPreview />
-          <div>
-            <SectionHeading
-              eyebrow={servicesSpotlight.eyebrow}
-              title={servicesSpotlight.title}
-              description={servicesSpotlight.description}
-            />
-            <Link
-              href={servicesSpotlight.ctaHref}
-              className="mt-8 inline-flex items-center bg-accent px-5 py-3 text-sm font-medium text-surface transition-colors duration-300 hover:bg-accent-deep"
-            >
-              {servicesSpotlight.ctaLabel}
-            </Link>
+        <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
+          <div className="grid items-center gap-8 md:grid-cols-[1.2fr_0.8fr] md:gap-12">
+            <TreatmentPreview />
+            <div className="flex flex-col justify-center">
+              <SectionHeading
+                eyebrow={servicesSpotlight.eyebrow}
+                title={servicesSpotlight.title}
+                description={servicesSpotlight.description}
+              />
+              <Link
+                href={servicesSpotlight.ctaHref}
+                className="mt-8 inline-flex w-fit items-center bg-accent px-5 py-3 text-sm font-medium text-surface transition-colors duration-300 hover:bg-accent-deep"
+              >
+                {servicesSpotlight.ctaLabel}
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
+      <BeforeAfterShowcase />
+
       <section className="border-b border-border bg-white">
-        <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-16 md:grid-cols-[0.85fr_1.15fr] md:gap-14 md:px-8 md:py-24">
-          <div className="relative mx-auto aspect-[4/5] w-full max-w-xs overflow-hidden md:mx-0 md:max-w-none">
+        <div className="mx-auto grid max-w-6xl items-center gap-6 px-5 py-12 md:grid-cols-[0.7fr_1.3fr] md:gap-10 md:px-8 md:py-16">
+          <div className="relative mx-auto aspect-[4/5] w-full max-w-[220px] overflow-hidden md:mx-0 md:max-w-[260px]">
             <Image
               src={ownerNote.image}
               alt={ownerNote.name}
               fill
               className="object-cover"
-              sizes="(max-width: 768px) 280px, 320px"
+              sizes="260px"
             />
           </div>
           <div className="animate-reveal">
-            <p className="text-xs font-medium uppercase tracking-[0.18em] text-accent">
-              {ownerNote.eyebrow}
-            </p>
-            <h2 className="mt-4 max-w-xl font-display text-3xl leading-snug text-foreground md:text-[2.35rem]">
-              {ownerNote.hook}
+            <h2 className="max-w-xl font-display text-2xl leading-snug text-foreground md:text-3xl">
+              {ownerNote.title}
             </h2>
-            <div className="mt-6 max-w-xl space-y-4 text-base leading-relaxed text-muted">
+            <div className="mt-4 max-w-xl space-y-3 text-sm leading-relaxed text-muted md:text-[0.95rem]">
               {ownerNote.paragraphs.map((paragraph) => (
                 <p key={paragraph.slice(0, 32)}>{paragraph}</p>
               ))}
             </div>
-            <div className="mt-8 border-t border-border pt-5">
-              <p className="font-display text-xl text-foreground">
+            <div className="mt-5 border-t border-border pt-4">
+              <p className="font-display text-lg text-foreground">
                 {ownerNote.name}
               </p>
-              <p className="mt-1 text-sm text-accent-deep">{ownerNote.role}</p>
+              <p className="mt-0.5 text-sm text-accent-deep">{ownerNote.role}</p>
             </div>
-            <Link
-              href="/about"
-              className="mt-8 inline-flex items-center bg-accent px-5 py-3 text-sm font-medium text-surface transition-colors duration-300 hover:bg-accent-deep"
-            >
-              Meet the team
-            </Link>
           </div>
         </div>
       </section>
 
-      <section className="border-b border-border bg-surface">
-        <div className="mx-auto max-w-6xl overflow-hidden px-5 py-10 md:px-8">
+      <section className="border-b border-border bg-background">
+        <div className="mx-auto max-w-6xl overflow-hidden px-5 py-12 md:px-8 md:py-14">
           <div className="relative w-full">
-            <div className="flex gap-6 animate-float-x">
+            <div className="flex gap-8 animate-float-x md:gap-10">
               {[...trustPoints, ...trustPoints].map((point, idx) => (
                 <div
                   key={point.label + idx}
-                  className="min-w-[220px] max-w-xs flex-shrink-0 rounded-lg border border-border bg-white/70 px-5 py-6 shadow-sm backdrop-blur"
+                  className="flex min-w-[240px] flex-shrink-0 items-center gap-3 border border-border bg-surface px-6 py-5"
                 >
-                  <p className="text-sm font-medium text-foreground">
+                  <span
+                    className="h-2 w-2 shrink-0 rounded-full bg-accent"
+                    aria-hidden
+                  />
+                  <p className="text-sm font-medium leading-snug text-foreground">
                     {point.label}
                   </p>
-                  <p className="mt-1 text-sm text-muted">{point.value}</p>
                 </div>
               ))}
             </div>
@@ -148,25 +135,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-24">
-        <SectionHeading
-          eyebrow="Patient voices"
-          title="Confidence, calmly earned"
-          description="A few words from patients who valued clear care and natural-looking results."
-        />
-        <div className="mt-12 grid gap-8 md:grid-cols-3">
-          {testimonials.slice(0, 3).map((item) => (
-            <blockquote key={item.id} className="border-l border-accent pl-5">
-              <p className="text-sm leading-relaxed text-foreground">
-                “{item.quote}”
-              </p>
-              <footer className="mt-4 text-sm text-muted">
-                <span className="font-medium text-foreground">{item.name}</span>
-                <span className="mx-2 text-border">·</span>
-                {item.detail}
-              </footer>
-            </blockquote>
-          ))}
+      <section className="mx-auto max-w-6xl px-5 py-12 md:px-8 md:py-16">
+        <h2 className="font-display text-[2rem] font-medium leading-tight tracking-tight text-foreground md:text-[2.75rem]">
+          Google Reviews
+        </h2>
+        <div className="mt-4 h-px w-16 bg-accent" aria-hidden />
+        <div className="mt-8">
+          <GoogleReviews />
         </div>
       </section>
 
@@ -187,16 +162,18 @@ export default function HomePage() {
             Ready for a clearer plan?
           </p>
           <p className="mt-4 max-w-lg text-base text-white/85">
-            Book a consultation at our Gulberg clinic and leave with a treatment
+            Book a slot at our Gulberg clinic and leave with a treatment
             path that feels right for you.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link
-              href="/contact"
+            <a
+              href={clinic.whatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center bg-surface px-5 py-3 text-sm font-medium text-foreground transition-colors duration-300 hover:bg-accent-soft"
             >
-              Book consultation
-            </Link>
+              Book slot
+            </a>
             <a
               href={clinic.phoneHref}
               className="inline-flex items-center border border-white/50 px-5 py-3 text-sm font-medium text-white transition-colors duration-300 hover:bg-white/10"

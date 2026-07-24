@@ -1,9 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useMemo, useState } from "react";
 import {
+  clinic,
   serviceCategories,
   services,
   type ServiceCategory,
@@ -78,12 +78,14 @@ export default function ServicesCatalog() {
                 ) : (
                   <span />
                 )}
-                <Link
-                  href="/contact"
+                <a
+                  href={clinic.whatsappHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-sm font-medium text-foreground underline-offset-4 hover:underline"
                 >
                   Book this treatment
-                </Link>
+                </a>
               </div>
             </div>
           </article>

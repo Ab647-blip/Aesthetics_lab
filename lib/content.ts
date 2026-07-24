@@ -5,6 +5,8 @@ export const clinic = {
     "A patient-first medical aesthetics clinic in Lahore offering personalized skincare and cosmetic treatments in a calm, clinical setting.",
   phone: "+92 300 1234567",
   phoneHref: "tel:+923001234567",
+  whatsappHref:
+    "https://wa.me/923001234567?text=Hi%2C%20I%27d%20like%20to%20book%20a%20consultation%20at%20Aesthetics%20Labs.",
   email: "hello@aestheticslabs.demo",
   emailHref: "mailto:hello@aestheticslabs.demo",
   address: "12-A, MM Alam Road, Gulberg III, Lahore",
@@ -15,6 +17,10 @@ export const clinic = {
   ],
   mapEmbedUrl:
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3402.0!2d74.345!3d31.520!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzHCsDMxJzEyLjAiTiA3NMKwMjAnNDIuMCJF!5e0!3m2!1sen!2s!4v1700000000000",
+  googleReviewsUrl:
+    "https://www.google.com/maps/search/?api=1&query=Aesthetics+Labs+Gulberg+Lahore",
+  googleRating: 4.9,
+  googleReviewCount: 128,
 } as const;
 
 export const navLinks = [
@@ -49,7 +55,7 @@ export const services: Service[] = [
     blurb:
       "A multi-step cleanse, extract, and hydrate treatment that leaves skin visibly clearer and more luminous—ideal before events or as a monthly ritual.",
     image:
-      "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=900&q=80",
     fromPrice: "From Rs. 12,000",
     featured: true,
   },
@@ -65,13 +71,23 @@ export const services: Service[] = [
     featured: true,
   },
   {
+    id: "spectra-peel",
+    name: "Spectra Peel Laser Treatment",
+    category: "Laser",
+    blurb:
+      "Painless laser renewal on FDA & CE approved USA machines—clearer, fresher skin with a patient-focused AI approach and natural-looking results.",
+    image: "/results/spectra-peel-after.jpg",
+    fromPrice: "From Rs. 7,500",
+    featured: true,
+  },
+  {
     id: "laser-hair",
     name: "Laser Hair Reduction",
     category: "Laser",
     blurb:
       "Customized sessions for smoother skin with progressive reduction in unwanted hair across face and body areas.",
     image:
-      "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1560750588-63c2c6af4b2e?auto=format&fit=crop&w=900&q=80",
     fromPrice: "From Rs. 8,000",
     featured: true,
   },
@@ -82,7 +98,7 @@ export const services: Service[] = [
     blurb:
       "Softens expression lines on the forehead, frown area, and crow’s feet while keeping natural movement.",
     image:
-      "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1631217868264-e5b90bb9e3f7?auto=format&fit=crop&w=900&q=80",
     fromPrice: "Consultation required",
     featured: true,
   },
@@ -93,7 +109,7 @@ export const services: Service[] = [
     blurb:
       "Restore subtle volume and contour to lips, cheeks, and smile lines with a natural-looking finish.",
     image:
-      "https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=900&q=80",
     fromPrice: "Consultation required",
   },
   {
@@ -103,7 +119,7 @@ export const services: Service[] = [
     blurb:
       "Targeted peels that improve dullness, pigmentation, and uneven texture under clinician guidance.",
     image:
-      "https://images.unsplash.com/photo-1596755389378-c31d21fd1273?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=900&q=80",
     fromPrice: "From Rs. 10,000",
   },
   {
@@ -113,7 +129,7 @@ export const services: Service[] = [
     blurb:
       "Protocols designed to address sun spots, melasma concerns, and uneven tone with staged treatment plans.",
     image:
-      "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&w=900&q=80",
     fromPrice: "From Rs. 14,000",
   },
   {
@@ -123,7 +139,7 @@ export const services: Service[] = [
     blurb:
       "Hydrating micro-treatments that improve skin quality, bounce, and glow from within.",
     image:
-      "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1598440947619-72d6213179bb?auto=format&fit=crop&w=900&q=80",
     fromPrice: "Consultation required",
   },
   {
@@ -133,7 +149,7 @@ export const services: Service[] = [
     blurb:
       "A thorough assessment of your goals, skin type, and history—so every treatment recommendation feels clear and personal.",
     image:
-      "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=900&q=80",
     fromPrice: "Complimentary with booking",
   },
 ];
@@ -180,48 +196,54 @@ export const team = [
   },
 ] as const;
 
-export const testimonials = [
+export const googleReviews = [
   {
     id: "t1",
     quote:
-      "My HydraFacial left my skin calm and glowing—not stripped. The team explained every step without pressure.",
+      "My HydraFacial left my skin calm and glowing. Clear steps, no pressure.",
     name: "Mariam K.",
-    detail: "HydraFacial",
+    rating: 5,
+    relativeTime: "2 weeks ago",
   },
   {
     id: "t2",
     quote:
-      "I was nervous about laser hair reduction. The consultation made the plan clear, and the results after a few sessions are already noticeable.",
+      "Nervous about laser at first—the plan was clear and results showed quickly.",
     name: "Hira S.",
-    detail: "Laser Hair Reduction",
+    rating: 5,
+    relativeTime: "a month ago",
   },
   {
     id: "t3",
     quote:
-      "Subtle filler work that still looks like me. Professional, clean clinic, and thoughtful aftercare advice.",
+      "Subtle filler that still looks like me. Clean clinic, thoughtful aftercare.",
     name: "Ayesha R.",
-    detail: "Dermal Fillers",
+    rating: 5,
+    relativeTime: "3 weeks ago",
   },
   {
     id: "t4",
     quote:
-      "Finally a place that listens. My pigment plan feels realistic, and my skin tone looks more even already.",
+      "They listen. My pigment plan feels realistic and my tone is already more even.",
     name: "Sana M.",
-    detail: "Pigment Correction",
+    rating: 5,
+    relativeTime: "2 months ago",
   },
   {
     id: "t5",
     quote:
-      "From booking to treatment, everything felt organized. The carbon peel gave me a fresh, smoother finish.",
+      "Organized from booking to treatment. Carbon peel left a fresh, smoother finish.",
     name: "Zoya A.",
-    detail: "Carbon Laser Peel",
+    rating: 4,
+    relativeTime: "a month ago",
   },
   {
     id: "t6",
     quote:
-      "They never oversold. Just clear recommendations that fit my skin and my schedule.",
+      "No upselling—just clear recommendations that fit my skin and schedule.",
     name: "Fatima N.",
-    detail: "Skin Consultation",
+    rating: 5,
+    relativeTime: "3 months ago",
   },
 ] as const;
 
@@ -248,9 +270,9 @@ export const gallery: GalleryItem[] = [
     title: "Clearer, calmer complexion",
     treatment: "HydraFacial series",
     before:
-      "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=800&q=80",
     after:
-      "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80",
   },
   {
     id: "g2",
@@ -258,9 +280,9 @@ export const gallery: GalleryItem[] = [
     title: "Smoother skin texture",
     treatment: "Carbon Laser Peel",
     before:
-      "https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=800&q=80",
-    after:
       "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=800&q=80",
+    after:
+      "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=800&q=80",
   },
   {
     id: "g3",
@@ -270,7 +292,7 @@ export const gallery: GalleryItem[] = [
     before:
       "https://images.unsplash.com/photo-1596755389378-c31d21fd1273?auto=format&fit=crop&w=800&q=80",
     after:
-      "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=800&q=80",
   },
   {
     id: "g4",
@@ -289,32 +311,55 @@ export const gallery: GalleryItem[] = [
   {
     id: "g6",
     type: "ambiance",
-    title: "Detail-led care",
+    title: "Clinician-led care",
     image:
       "https://images.unsplash.com/photo-1631217868264-e5b90bb9e3f7?auto=format&fit=crop&w=1200&q=80",
   },
 ];
 
+export const resultsShowcase = {
+  eyebrow: "",
+  title: "Why Patients Trust Us",
+  description: "",
+  featured: {
+    id: "spectra-peel",
+    title: "Spectra Peel Laser Treatment",
+    treatment: "Laser skin renewal",
+    priceLabel: "Prices start from",
+    price: "Rs. 7,500.00 PKR",
+    before: "/results/spectra-peel-before.jpg",
+    after: "/results/spectra-peel-after.jpg",
+    benefits: [
+      "Targets congestion, dullness, and uneven tone",
+      "Painless sessions with minimal downtime",
+      "USA machines — FDA & CE approved",
+      "Patient-focused AI treatment mapping",
+      "Natural-looking clarity without a ‘treated’ look",
+    ],
+  },
+} as const;
+
 export const trustPoints = [
-  { label: "Clinician-led care", value: "Medical oversight" },
-  { label: "Personalized plans", value: "No one-size protocols" },
-  { label: "Calm environment", value: "Quiet, private suites" },
-  { label: "Clear pricing", value: "Transparent consults" },
+  { label: "Honest Consultations" },
+  { label: "Transparent Pricing" },
+  { label: "Doctor-Led Care" },
+  { label: "Natural-Looking Results" },
+  { label: "Support Beyond the Appointment" },
 ] as const;
 
 export const images = {
   hero: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=2000&q=80",
   about:
-    "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1400&q=80",
-  cta: "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=1600&q=80",
+    "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1400&q=80",
+  cta: "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&w=1600&q=80",
 } as const;
 
 export const ownerNote = {
-  eyebrow: "A note from our founder",
-  hook: "I built this clinic for the version of you that wants to feel like yourself again.",
+  title: "A Note from Dr. Sara Malik",
   paragraphs: [
-    "Years ago, I sat across from patients who weren’t chasing perfection they were tired of feeling unseen in their own skin. Some had been sold treatments they didn’t need. Others had never been asked what “natural” meant to them. That stayed with me.",
-    "Aesthetics Labs started as a quiet promise: listen first, explain clearly, and only recommend what I’d choose for someone I love. Every consultation, every protocol, every calm room in this clinic comes back to that.",
+    "When I started practicing aesthetic medicine, I realized that most people weren't looking to change who they were—they simply wanted to feel more confident in their own skin. That belief has shaped the way I treat every patient.",
+    "I believe in honest advice, natural-looking results, and recommending only what is truly needed. My goal has always been to make every patient feel heard, comfortable, and confident throughout their journey.",
+    "Thank you for trusting Aesthetics Labs. It is a privilege to be a part of your story.",
   ],
   name: "Dr. Sara Malik",
   role: "Founder & Medical Director",
@@ -322,37 +367,14 @@ export const ownerNote = {
     "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80",
 } as const;
 
-export const homeIntro = {
-  heading: "Discover the beauty in self confidence",
-  notes: [
-    "Confidence isn’t about changing who you are it’s about feeling at ease in your own skin again.",
-    "At Aesthetics Labs, every treatment begins with listening, so the path we recommend feels personal, calm, and true to you.",
-  ],
-} as const;
-
 export const servicesSpotlight = {
-  eyebrow: "Our treatments",
-  title: "Care that meets you where you are",
+  eyebrow: "",
+  title: "UltraClear® Cold Fiber Laser",
   description:
-    "From glow facials to clinician-guided renewals—explore the full menu and find what fits your skin goals.",
+    "Experience the latest advancement in laser technology with the UltraClear® Cold Fiber Laser, designed to improve skin texture, reduce fine lines, acne scars, and pigmentation with minimal downtime. This innovative treatment delivers smoother, brighter, and more youthful-looking skin safely and comfortably.",
   ctaLabel: "View all services",
   ctaHref: "/services",
-  frames: [
-    {
-      src: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=1200&q=80",
-      label: "HydraFacial glow",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=1200&q=80",
-      label: "Facial laser care",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&w=1200&q=80",
-      label: "Skin renewal ritual",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=1200&q=80",
-      label: "Refined, natural finish",
-    },
-  ],
+  videoSrc: "/media/clinic-treatment.mp4",
+  videoPoster: "/media/clinic-treatment-poster.jpg",
+  videoLabel: "UltraClear® Cold Fiber Laser",
 } as const;

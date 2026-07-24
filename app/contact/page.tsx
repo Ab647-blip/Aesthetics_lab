@@ -5,7 +5,7 @@ import { clinic } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: `Book a consultation or visit ${clinic.name} in ${clinic.city}.`,
+  description: `Book a slot or visit ${clinic.name} in ${clinic.city}.`,
 };
 
 export default function ContactPage() {
@@ -14,7 +14,7 @@ export default function ContactPage() {
       <section className="mx-auto max-w-6xl px-5 pb-10 md:px-8">
         <SectionHeading
           eyebrow="Contact"
-          title="Book a consultation"
+          title="Book slot"
           description="Share a few details and we’ll outline next steps. This demo form validates locally and shows a success state—no data is sent."
         />
       </section>

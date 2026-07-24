@@ -1,71 +1,58 @@
 "use client";
 
-import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
 import { servicesSpotlight } from "@/lib/content";
 
 export default function TreatmentPreview() {
-  const frames = servicesSpotlight.frames;
-  const [active, setActive] = useState(0);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
     const prefersReduced =
-      typeof window !== "undefined" &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReduced) return;
+    if (prefersReduced) {
+      video.pause();
+      return;
+    }
 
-    const id = window.setInterval(() => {
-      setActive((current) => (current + 1) % frames.length);
-    }, 3200);
+    const play = () => {
+      void video.play().catch(() => {
+        /* Autoplay may be blocked until interaction */
+      });
+    };
 
-    return () => window.clearInterval(id);
-  }, [frames.length]);
+    play();
+  }, []);
 
   return (
-    <div className="relative aspect-[4/5] w-full overflow-hidden bg-surface-soft md:aspect-[5/6]">
-      {frames.map((frame, index) => (
-        <div
-          key={frame.src}
-          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-            index === active ? "opacity-100" : "opacity-0"
-          }`}
-          aria-hidden={index !== active}
-        >
-          <Image
-            src={frame.src}
-            alt={frame.label}
-            fill
-            className={`object-cover transition-transform duration-[3200ms] ease-out ${
-              index === active ? "scale-105" : "scale-100"
-            }`}
-            sizes="(max-width: 768px) 100vw, 45vw"
-            priority={index === 0}
-          />
-        </div>
-      ))}
+    <div className="relative aspect-video w-full overflow-hidden bg-foreground/90 shadow-sm ring-1 ring-border">
+      <video
+        ref={videoRef}
+        className="absolute inset-0 h-full w-full object-contain"
+        src={servicesSpotlight.videoSrc}
+        poster={servicesSpotlight.videoPoster}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        aria-label={servicesSpotlight.videoLabel}
+      />
 
       <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-t from-foreground/45 via-transparent to-transparent"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-foreground/50 to-transparent"
         aria-hidden
       />
 
-      <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6">
-        <p className="text-xs uppercase tracking-[0.16em] text-white/75">
-          Live look
+      <div className="absolute bottom-0 left-0 right-0 p-4 md:p-5">
+        <p className="text-[11px] uppercase tracking-[0.18em] text-white/80">
+          In clinic
         </p>
-        <p className="mt-1 font-display text-xl text-white md:text-2xl">
-          {frames[active]?.label}
+        <p className="mt-1 font-display text-lg leading-snug text-white md:text-xl">
+          {servicesSpotlight.videoLabel}
         </p>
-        <div className="mt-4 flex gap-2" aria-hidden>
-          {frames.map((frame, index) => (
-            <span
-              key={frame.src}
-              className={`h-1 flex-1 transition-colors duration-500 ${
-                index === active ? "bg-white" : "bg-white/35"
-              }`}
-            />
-          ))}
-        </div>
       </div>
     </div>
   );
